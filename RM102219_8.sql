@@ -42,6 +42,9 @@ CREATE TABLE Arbitro (
     CONSTRAINT IdArbitro PRIMARY KEY (IdArbitro)
 );
 
+ALTER TABLE Arbitro ADD FOREIGN KEY (IdNacionalidad)
+REFERENCES Nacionalidad(IdNacionalidad);
+
 /* Table - Fase */
 DROP TABLE IF EXISTS Fase;
 CREATE TABLE Fase (
@@ -73,7 +76,7 @@ DROP TABLE IF EXISTS RolEntrenador;
 CREATE TABLE RolEntrenador (
     IdRolEntrenador INT NOT NULL,
 
-    Rol VARCHAR(45),
+    Rol VARCHAR(45) NOT NULL,
 
     CONSTRAINT IdRolEntrenador PRIMARY KEY(IdRolEntrenador)
 );
@@ -81,10 +84,48 @@ CREATE TABLE RolEntrenador (
 /* Table - EntrenadorRolDetalle */
 DROP TABLE IF EXISTS EntrenadorRolDetalle;
 CREATE TABLE EntrenadorRolDetalle (
-    IdEntrenadorRolDetalle INT NOT NULL,
-    
-)
+    IdEntrenadorRolDetalle INT NOT NULL AUTO_INCREMENT,
+    IdEntrenador INT NOT NULL,
+    IdRolEntrenador INT NOT NULL,
 
+    CONSTRAINT IdEntrenadorRolDetalle PRIMARY KEY(IdEntrenadorRolDetalle)
+);
+
+ALTER TABLE EntrenadorRolDetalle ADD FOREIGN KEY (IdEntrenador)
+REFERENCES Entrenador(IdEntrenador);
+
+ALTER TABLE EntrenadorRolDetalle ADD FOREIGN KEY (IdRolEntrenador)
+REFERENCES RolEntrenador(IdRolEntrenador);
+
+/* Table - Jugador */
+DROP TABLE IF EXISTS Jugador;
+CREATE TABLE Jugador (
+    IdJugador INT NOT NULL,
+
+    Nombre VARCHAR(45) NOT NULL,
+    DetalleGanancia FLOAT NOT NULL,
+
+    CONSTRAINT IdJugador PRIMARY KEY(IdJugador)
+);
+
+/* Table - EntJugDetalle */
+DROP TABLE IF EXISTS EntJugDetalle;
+CREATE TABLE EntJugDetalle (
+    IdEntJugDetalle INT NOT NULL AUTO_INCREMENT,
+    IdEntrenadorRolDetalle INT NOT NULL,
+    IdJugador INT NOT NULL,
+
+    FechaInicio DATE NOT NULL,
+    FechaFin DATE NOT NULL, 
+    
+    CONSTRAINT IdEntJugDetalle PRIMARY KEY(IdEntJugDetalle)
+);
+
+ALTER TABLE EntJugDetalle ADD FOREIGN KEY(IdEntrenadorRolDetalle)
+REFERENCES EntrenadorRolDetalle(IdEntrenadorRolDetalle);
+
+ALTER TABLE EntJugDetalle ADD FOREIGN KEY(IdJugador)
+REFERENCES Jugador(IdJugador);
 
 /* Table - Partido */
 DROP TABLE IF EXISTS Partido;
@@ -99,10 +140,28 @@ CREATE TABLE Partido (
     CONSTRAINT IdPartido PRIMARY KEY (IdPartido)
 );
 
+ALTER TABLE Partido ADD FOREIGN KEY(IdFase)
+REFERENCES Fase(IdFase);
+
+/* Table - DetallePartido */
+DROP TABLE IF EXISTS DetallePartido;
+CREATE TABLE DetallePartido (
+    IdDetallePartido INT NOT NULL AUTO_INCREMENT,
+    IdJugador INT NOT NULL,
+    IdPartido INT NOT NULL,
+
+    Puntaje INT,
+    Resultado VARCHAR(25),
+
+    CONSTRAINT IdDetallePartido PRIMARY KEY (IdDetallePartido)
+);
 
 
-ALTER TABLE Arbitro ADD FOREIGN KEY (IdNacionalidad)
-REFERENCES Nacionalidad(IdNacionalidad);
+ALTER TABLE DetallePartido ADD FOREIGN KEY(IdJugador)
+REFERENCES Jugador(IdJugador);
+
+ALTER TABLE DetallePartido ADD FOREIGN KEY(IdPartido)
+REFERENCES Partido(IdPartido);
 
 /* Table - LugarTorneo */
 DROP TABLE IF EXISTS LugarTorneo;
