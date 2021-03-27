@@ -127,11 +127,39 @@ REFERENCES EntrenadorRolDetalle(IdEntrenadorRolDetalle);
 ALTER TABLE EntJugDetalle ADD FOREIGN KEY(IdJugador)
 REFERENCES Jugador(IdJugador);
 
+
+/* Table - Modalidad */
+DROP TABLE IF EXISTS Modalidad;
+CREATE TABLE Modalidad (
+    IdModalidad INT NOT NULL,
+
+    Modalidad VARCHAR(45) NOT NULL,
+
+    CONSTRAINT IdModalidad PRIMARY KEY(IdModalidad)
+);
+
+/* Table - Torneo */
+DROP TABLE IF EXISTS Torneo;
+CREATE TABLE Torneo (
+    IdTorneo INT NOT NULL,
+    IdModalidad INT NOT NULL,
+    IdLugarTorneo INT NOT NULL,
+
+    Anho DATE NOT NULL,
+
+    CONSTRAINT IdTorneo PRIMARY KEY(IdTorneo)
+);
+
+ALTER TABLE Torneo ADD FOREIGN KEY(IdModalidad)
+REFERENCES Modalidad(IdModalidad);
+
+
 /* Table - Partido */
 DROP TABLE IF EXISTS Partido;
 CREATE TABLE Partido (
     IdPartido INT NOT NULL,
-
+    IdArbitro INT NOT NULL,
+    IdTorneo INT NOT NULL,
     IdFase INT NOT NULL,
 
     FechaIni DATETIME NOT NULL,
@@ -139,6 +167,12 @@ CREATE TABLE Partido (
 
     CONSTRAINT IdPartido PRIMARY KEY (IdPartido)
 );
+
+ALTER TABLE Partido ADD FOREIGN KEY(IdArbitro)
+REFERENCES Arbitro(IdArbitro);
+
+ALTER TABLE Partido ADD FOREIGN KEY(IdTorneo)
+REFERENCES Torneo(IdTorneo);
 
 ALTER TABLE Partido ADD FOREIGN KEY(IdFase)
 REFERENCES Fase(IdFase);
@@ -155,7 +189,6 @@ CREATE TABLE DetallePartido (
 
     CONSTRAINT IdDetallePartido PRIMARY KEY (IdDetallePartido)
 );
-
 
 ALTER TABLE DetallePartido ADD FOREIGN KEY(IdJugador)
 REFERENCES Jugador(IdJugador);
@@ -176,3 +209,6 @@ CREATE TABLE LugarTorneo (
 
 ALTER TABLE LugarTorneo ADD FOREIGN KEY (IdPais)
 REFERENCES Pais(IdPais);
+
+ALTER TABLE Torneo ADD FOREIGN KEY(IdLugarTorneo)
+REFERENCES LugarTorneo(IdLugarTorneo);
