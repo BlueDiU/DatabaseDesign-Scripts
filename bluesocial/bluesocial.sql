@@ -176,13 +176,14 @@ REFERENCES Solicitud(IdSolicitud);
 ALTER TABLE FacturaDetalle ADD FOREIGN KEY (IdFactura) 
 REFERENCES Factura(IdFactura);
 
-
 /* PRODUCTO */
 DROP TABLE IF EXISTS Producto;
 CREATE TABLE Producto (
   CodigoBarra INT NOT NULL AUTO_INCREMENT,
   IdCategoriaProducto INT NOT NULL,
   IdMarca INT NOT NULL,
+  IdSolicitud INT NOT NULL,
+  IdCarrito INT NOT NULL,
 
   Nombre VARCHAR(45) NOT NULL,
   Peso float NOT NULL,
@@ -196,3 +197,91 @@ ALTER TABLE Producto ADD FOREIGN KEY (IdCategoriaProducto)
 REFERENCES CategoriaProducto(IdCategoriaProducto);
 ALTER TABLE Producto ADD FOREIGN KEY (IdMarca) 
 REFERENCES Marca(IdMarca);
+ALTER TABLE Producto ADD FOREIGN KEY (IdSolicitud) 
+REFERENCES Solicitud(IdSolicitud);
+
+/* Clasificacion_Usuario */
+DROP TABLE IF EXISTS ClasificacionUsuario;
+CREATE TABLE ClasificacionUsuario (
+  IdClasUsuario INT NOT NULL AUTO_INCREMENT,
+  NombreClas VARCHAR(45) NOT NULL,
+  Descripcion VARCHAR(45) NOT NULL,
+
+  PRIMARY KEY (IdClasUsuario)
+);
+
+/* Usuario */
+DROP TABLE IF EXISTS Usuario;
+CREATE TABLE Usuario (
+  IdUsuario INT NOT NULL AUTO_INCREMENT,
+  IdClasUsuario INT NOT NULL,
+  CodigoPais INT NOT NULL,
+  
+  Nombre VARCHAR(45) NOT NULL,
+  Apellido VARCHAR(45) NOT NULL,
+  Clave VARCHAR(45) NOT NULL,
+  FechaNac DATE,
+
+  PRIMARY KEY(IdUsuario)
+);
+
+ALTER TABLE Usuario ADD FOREIGN KEY (IdClasUsuario) 
+REFERENCES ClasificacionUsuario(IdClasUsuario);
+
+ALTER TABLE Usuario ADD FOREIGN KEY (CodigoPais) 
+REFERENCES Pais(CodigoPais);
+
+/* Domicilio */
+DROP TABLE IF EXISTS Domicilio;
+CREATE TABLE Domicilio (
+  IdDomicilio INT NOT NULL AUTO_INCREMENT,
+  IdUsuario INT NOT NULL,
+
+  Latitud DOUBLE NOT NULL,
+  Longitud DOUBLE NOT NULL,
+
+  PRIMARY KEY(IdDomicilio)
+);
+
+ALTER TABLE Domicilio ADD FOREIGN KEY (IdUsuario) 
+REFERENCES Usuario(IdUsuario);
+
+/* Geocerca */
+DROP TABLE IF EXISTS Geocerca;
+CREATE TABLE Geocerca (
+ IdGeocerca INT NOT NULL AUTO_INCREMENT,
+ -- aun por ver que va :V
+ 
+ PRIMARY KEY(IdGeocerca)
+);
+
+/* DomicilioDetalle*/
+DROP TABLE IF EXISTS DomicilioDetalle;
+CREATE TABLE DomicilioDetalle (
+  IdDomDetalle INT NOT NULL AUTO_INCREMENT,
+  IdDomicilio INT NOT NULL,
+  IdGeocerca INT NOT NULL,
+
+  PRIMARY KEY (IdDomDetalle)
+);
+
+ALTER TABLE DomicilioDetalle ADD FOREIGN KEY (IdDomicilio) 
+REFERENCES Domicilio(IdDomicilio);
+ALTER TABLE DomicilioDetalle ADD FOREIGN KEY (IdGeocerca) 
+REFERENCES Geocerca(IdGeocerca);
+
+/* CARRITO */
+DROP TABLE IF EXISTS Carrito;
+CREATE TABLE Carrito (
+  IdCarrito INT NOT NULL AUTO_INCREMENT,
+  CodigoBarra INT NOT NULL,
+  IdUsuario INT NOT NULL,
+
+  PRIMARY KEY (IdCarrito)
+);
+
+ALTER TABLE Carrito ADD FOREIGN KEY (CodigoBarra) 
+REFERENCES Producto(CodigoBarra);
+
+ALTER TABLE Carrito ADD FOREIGN KEY (IdUsuario) 
+REFERENCES Usuario(IdUsuario);
