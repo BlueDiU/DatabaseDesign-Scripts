@@ -9,7 +9,7 @@ CREATE TABLE Proveedor (
   Web VARCHAR(100) DEFAULT NULL,
 
   PRIMARY KEY (IdProveedor)
-);
+); 
 
 
 
