@@ -160,7 +160,7 @@ CREATE TABLE Solicitud (
 );
 
 ALTER TABLE Solicitud ADD FOREIGN KEY (IdProducto) 
-REFERENCES Producto(IdMIdProductoarca);
+REFERENCES Producto(IdProducto);
 
 /* METODO_PAGO */
 DROP TABLE IF EXISTS MetodoPago;
@@ -275,19 +275,19 @@ REFERENCES Geocerca(IdGeocerca);
 DROP TABLE IF EXISTS Carrito;
 CREATE TABLE Carrito (
   IdCarrito INT NOT NULL AUTO_INCREMENT,
-  CodigoBarra INT NOT NULL,
+  IdProducto INT NOT NULL,
   IdUsuario INT NOT NULL,
 
   PRIMARY KEY (IdCarrito)
 );
 
-ALTER TABLE Carrito ADD FOREIGN KEY (CodigoBarra) 
-REFERENCES Producto(CodigoBarra);
+ALTER TABLE Carrito ADD FOREIGN KEY (IdProducto) 
+REFERENCES Producto(IdProducto);
 
 ALTER TABLE Carrito ADD FOREIGN KEY (IdUsuario) 
 REFERENCES Usuario(IdUsuario);
 
-
+-- Datos ClasificacionUsuario - 5 registros
 INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
 VALUES ('Desempleado', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
@@ -298,3 +298,80 @@ INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
 VALUES ('persona sin trabajo estable', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
 VALUES ('personas de bajos ingreso', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+
+--  Datos CategoriaColaborador - 5 registros
+INSERT INTO CategoriaColaborador (NombreCategoria)
+VALUES ('empresa');
+INSERT INTO CategoriaColaborador (NombreCategoria)
+VALUES ('entidad');
+INSERT INTO CategoriaColaborador (NombreCategoria)
+VALUES ('fundacion');
+INSERT INTO CategoriaColaborador (NombreCategoria)
+VALUES ('escuela');
+INSERT INTO CategoriaColaborador (NombreCategoria)
+VALUES ('productores');
+
+-- Datos ClasificacionUsuario - 4 registros
+INSERT INTO CategoriaProducto (NombreCategoria, Descripcion)
+VALUES ('lácteos', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO CategoriaProducto (NombreCategoria, Descripcion)
+VALUES ('vegetales', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO CategoriaProducto (NombreCategoria, Descripcion)
+VALUES ('bebidas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO CategoriaProducto (NombreCategoria, Descripcion)
+VALUES ('granos basicos', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+
+-- Datos - 7 registros
+INSERT INTO Cargo (NombreCargo)
+VALUES ('programador');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('repartidor');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('cajero');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('gerente');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('supervisores');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('ordenansa');
+INSERT INTO Cargo (NombreCargo)
+VALUES ('vigilante');
+
+-- Datos - Pais
+INSERT INTO Pais (CodigoPais, NombrePais)
+VALUES (502, 'Guatemala');
+INSERT INTO Pais (CodigoPais, NombrePais)
+VALUES (504, 'Hunduras');
+INSERT INTO Pais (CodigoPais, NombrePais)
+VALUES (503, 'El Salvador');
+INSERT INTO Pais (CodigoPais, NombrePais)
+VALUES (506, 'Costa Rica');
+INSERT INTO Pais (CodigoPais, NombrePais)
+VALUES (505, 'Nicaragua');
+
+
+-- Datos - Marca
+INSERT INTO Marca VALUES (1, 'BIMBO');
+INSERT INTO Marca VALUES (2, 'RITZ');
+INSERT INTO Marca VALUES (3, 'NESQUIK');
+INSERT INTO Marca VALUES (4, 'ORISOL');
+INSERT INTO Marca VALUES (5, 'DEL MONTE');
+INSERT INTO Marca VALUES (6, 'DEL VALLE');
+INSERT INTO Marca VALUES (7, 'AL-DÍA');
+INSERT INTO Marca VALUES (8, 'DAN');
+INSERT INTO Marca VALUES (9, 'SKITTLES');
+INSERT INTO Marca VALUES (10, 'DEL MONTE');
+INSERT INTO Marca VALUES (11, 'MAIZENA');
+INSERT INTO Marca VALUES (12, 'GIRASOL');
+INSERT INTO Marca VALUES (13, 'PATRONA');
+INSERT INTO Marca VALUES (14, 'NUTRIOLI');
+INSERT INTO Marca VALUES (15, 'PICNIC');
+INSERT INTO Marca VALUES (16, 'MERCAR');
+INSERT INTO Marca VALUES (17, 'DON PEDRO');
+INSERT INTO Marca VALUES (18, 'MATUTANO');
+INSERT INTO Marca VALUES (19, 'ORIENTAL');
+INSERT INTO Marca VALUES (20, 'KELLOWS');
+
+
+
+
