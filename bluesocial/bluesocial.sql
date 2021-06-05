@@ -80,7 +80,7 @@ CREATE TABLE Cargo (
  IdCargo INT NOT NULL AUTO_INCREMENT,
 
  NombreCargo VARCHAR(45) NOT NULL,
- Estado CHAR DEFAULT 'A',
+ Estado CHAR DEFAULT 'A', 
 
  PRIMARY KEY (IdCargo)
 );
@@ -127,15 +127,40 @@ CREATE TABLE Marca (
   PRIMARY KEY(IdMarca)
 );
 
+/* PRODUCTO */
+DROP TABLE IF EXISTS Producto;
+CREATE TABLE Producto (
+  IdProducto INT NOT NULL AUTO_INCREMENT,
+  IdCategoriaProducto INT NOT NULL,
+  IdMarca INT NOT NULL,
+  IdCarrito INT NOT NULL,
+
+  Nombre VARCHAR(45) NOT NULL,
+  Peso float NOT NULL,
+  ValorUnit float NOT NULL,
+  FechaVencimiento DATE,
+
+  PRIMARY KEY (IdProducto)
+);
+
+ALTER TABLE Producto ADD FOREIGN KEY (IdCategoriaProducto)
+REFERENCES CategoriaProducto(IdCategoriaProducto);
+ALTER TABLE Producto ADD FOREIGN KEY (IdMarca) 
+REFERENCES Marca(IdMarca);
+
 /* SOLICITUD */
 DROP TABLE IF EXISTS Solicitud;
 CREATE TABLE Solicitud (
   IdSolicitud INT NOT NULL AUTO_INCREMENT,
+  IdProducto INT NOT NULL,
   Cantidad INT NOT NULL,
   Estado CHAR(1) DEFAULT 'A',
 
   PRIMARY KEY (IdSolicitud)
 );
+
+ALTER TABLE Solicitud ADD FOREIGN KEY (IdProducto) 
+REFERENCES Producto(IdMIdProductoarca);
 
 /* METODO_PAGO */
 DROP TABLE IF EXISTS MetodoPago;
@@ -175,30 +200,6 @@ ALTER TABLE FacturaDetalle ADD FOREIGN KEY (IdSolicitud)
 REFERENCES Solicitud(IdSolicitud);
 ALTER TABLE FacturaDetalle ADD FOREIGN KEY (IdFactura) 
 REFERENCES Factura(IdFactura);
-
-/* PRODUCTO */
-DROP TABLE IF EXISTS Producto;
-CREATE TABLE Producto (
-  CodigoBarra INT NOT NULL AUTO_INCREMENT,
-  IdCategoriaProducto INT NOT NULL,
-  IdMarca INT NOT NULL,
-  IdSolicitud INT NOT NULL,
-  IdCarrito INT NOT NULL,
-
-  Nombre VARCHAR(45) NOT NULL,
-  Peso float NOT NULL,
-  ValorUnit float NOT NULL,
-  FechaVencimiento DATE,
-
-  PRIMARY KEY (CodigoBarra)
-);
-
-ALTER TABLE Producto ADD FOREIGN KEY (IdCategoriaProducto)
-REFERENCES CategoriaProducto(IdCategoriaProducto);
-ALTER TABLE Producto ADD FOREIGN KEY (IdMarca) 
-REFERENCES Marca(IdMarca);
-ALTER TABLE Producto ADD FOREIGN KEY (IdSolicitud) 
-REFERENCES Solicitud(IdSolicitud);
 
 /* Clasificacion_Usuario */
 DROP TABLE IF EXISTS ClasificacionUsuario;
@@ -285,3 +286,15 @@ REFERENCES Producto(CodigoBarra);
 
 ALTER TABLE Carrito ADD FOREIGN KEY (IdUsuario) 
 REFERENCES Usuario(IdUsuario);
+
+
+INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
+VALUES ('Desempleado', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
+VALUES ('Jubilado', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
+VALUES ('inmigrante', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
+VALUES ('persona sin trabajo estable', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO ClasificacionUsuario (NombreClas, Descripcion)
+VALUES ('personas de bajos ingreso', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
