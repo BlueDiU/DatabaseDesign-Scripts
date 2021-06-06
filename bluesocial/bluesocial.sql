@@ -133,7 +133,6 @@ CREATE TABLE Producto (
   IdProducto INT NOT NULL AUTO_INCREMENT,
   IdCategoriaProducto INT NOT NULL,
   IdMarca INT NOT NULL,
-  IdCarrito INT NOT NULL,
 
   Nombre VARCHAR(45) NOT NULL,
   Peso float NOT NULL,
@@ -341,14 +340,13 @@ VALUES ('vigilante');
 INSERT INTO Pais (CodigoPais, NombrePais)
 VALUES (502, 'Guatemala');
 INSERT INTO Pais (CodigoPais, NombrePais)
-VALUES (504, 'Hunduras');
+VALUES (504, 'Honduras');
 INSERT INTO Pais (CodigoPais, NombrePais)
 VALUES (503, 'El Salvador');
 INSERT INTO Pais (CodigoPais, NombrePais)
 VALUES (506, 'Costa Rica');
 INSERT INTO Pais (CodigoPais, NombrePais)
 VALUES (505, 'Nicaragua');
-
 
 -- Datos - Marca
 INSERT INTO Marca VALUES (1, 'BIMBO');
@@ -372,6 +370,164 @@ INSERT INTO Marca VALUES (18, 'MATUTANO');
 INSERT INTO Marca VALUES (19, 'ORIENTAL');
 INSERT INTO Marca VALUES (20, 'KELLOWS');
 
+-- Datos Colaborador
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (503, 1, 'Eusoj Vasri', 'eosoj@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (504, 2, 'Servi Viajes', 'serviviajes@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (502, 4, 'Sonrisas SV', 'risassv@gmail.com');
 
+-- Datos Almacen
+INSERT INTO Almacen (Longitud, Latitud) VALUES (290, 345);
+INSERT INTO Almacen (Longitud, Latitud) VALUES (290.34, 345);
+INSERT INTO Almacen (Longitud, Latitud) VALUES (902.34, 123.45);
 
+-- Datos Proveedor
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 1, "Juan", "Romero", "www.juan.com", 12345678, 234.45, 345.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Manuel", "Menjivar", "www.manuel.com", 52345678, 345.45, 984.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 3, "Jose", "Tobar", "www.jose.com", 12675678, 145.35, 884.47);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 3, "Alexander", "Sanchez", "www.alexander.com", 12337678, 325.95, 910.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 1, "Carlos", "Martinez", "www.carlos.com", 89345678, 245.45, 784.62);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 1, "Jose", "moran", "www.moran.com", 15675678, 385.45, 884.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Maria", "Mendez", "www.maria.com", 18745678, 355.65, 884.87);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 2, "Rosa", "Ramirez", "www.rosa.com", 12345699, 445.45, 994.77);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 1, "Karla", "Menjivar", "www.karla.com", 12345657, 355.45, 944.47);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 3, "Carlos", "Ramirez", "www.carlos.com", 15845678, 445.45, 884.88);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 2, "Rodrigo", "Castro", "www.rodrigo.com", 12395678, 344.65, 914.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 1, "Cesar", "Martinez", "www.cesar.com", 82345678, 348.25, 914.17);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Manuel", "Ramos", "www.manuel2.com", 12344578, 335.45, 784.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Jose", "Castro", "www.castro.com", 22385678, 345.40, 904.37);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 1, "Alejandro", "Herrera", "www.alejandro.com", 89346678, 395.45, 884.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 1, "Alfredo", "Campos", "www.alfredo.com", 12615678, 305.45, 904.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 2, "Gabriela", "Perez", "www.gabriela.com", 12345678, 385.45, 888.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Carlos", "Melendez", "www.melendez.com", 02345678, 315.45, 914.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 2, "Ernesto", "Vasquez", "www.ernesto.com", 92349677, 304.45, 904.60);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 3, "Andres", "Ramirez", "www.andres.com", 52345678, 345.55, 984.57);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 3, "Helen", "Sanchez", "www.helen.com", 72745658, 345.46, 984.37);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 1, "Mauricio", "Lopez", "www.mauricio.com", 12334678, 395.45, 884.17);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 3, "Diego", "Velasquez", "www.diego.com", 12300678, 345.05, 984.07);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Roberto", "Ramirez", "www.roberto.com", 22345678, 345.05, 984.60);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 1, "Karen", "Lopez", "www.karen.com", 12666678, 335.45, 934.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 3, "Marcos", "Flores", "www.marcos.com", 99345678, 395.45, 984.69);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 3, "Humberto", "Ortiz", "www.humberto.com", 11145678, 345.15, 984.17);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 2, "Armando", "Castro", "www.armando.com", 12345008, 340.05, 904.67);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (503, 2, "Edwin", "Salazar", "www.edwin.com", 12345048, 305.45, 904.17);
+INSERT INTO Proveedor(CodigoPais, IdAlmacen, Nombre, Apellido, Web, Telefono, Latitud, Longitud)
+VALUES (502, 1, "Ariel", "Martinez", "www.ariel.com", 99345678, 349.45, 984.69);
 
+-- Datos Empleado
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (98234473-6, 1, 1, 'Maximiliano', 'Rodríguez', 456, 987.09, 65647893, '1999-07-25');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (97434739-0, 1, 2, 'Claudia', 'Cerón', 0975, 0964, 76363226, '1978-11-19');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (09264537-8, 1, 3, 'Anthony', 'Vasquez', 4935, 8235.09, 76853439, '1982-08-09');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (02744883-6, 3, 1, 'Nicole', 'Vega', 975, 3456, 68986534, '1998-08-08');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (34567897-1, 2, 1, 'Alexander', 'Perez', 356, 83564.964, 76534529, '1985-02-15');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (93645428-4, 2, 1, 'Kevin', 'Hernandez', 7346, 7356.043, 63642429, '1997-07-05');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (58643257-2, 2, 1, 'Daniel', 'Deras', 6354, 987.09, 72444839, '2000-01-02');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (93636745-3, 3, 1, 'Paola', 'Carías', 754, 88348, 63894713, '2000-03-12');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (97837434-7, 4, 1, 'Diana', 'Ponce', 874, 345876, 76543452, '1979-04-03');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (86348862-2, 5, 1, 'Juan', 'Ayala', 975, 7834.934, 67324879, '1980-10-20');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (54728378-0, 6, 1, 'María', 'Martínez', 77665, 7657, 78234632, '1982-12-30');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (62346238-1, 7, 1, 'Luis', 'Flores', 7234.834, 635, 66534842, '1980-05-20');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (74398358-5, 2, 2, 'Pedro', 'Fuentes', 93257.35, 7834.934, 67886377, '1986-11-28');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (07432896-2, 2, 2, 'Joaquin', 'Mejía', 3894.35, 3647, 70374092, '1998-07-27');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (78325865-5, 2, 2, 'Alexander', 'Ortíz', 356, 984.435, 76538745, '1981-02-25');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (82375987-4, 3, 2, 'Lucas', 'Aleman', 4567, 776.043, 67325865, '1992-02-22');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (94877458-2, 4, 2, 'Dolores', 'Araniva', 4938, 8725.09, 73928574, '1995-01-02');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (94884979-3, 5, 2, 'Alejandro', 'Caravantes', 9487, 883, 79497908, '1994-08-12');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (49870238-7, 6, 2, 'Andy', 'Rodríguez', 43827, 345876, 79327834, '1979-10-14');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (74893638-2, 6, 2, 'Danilo', 'Ramos', 9547, 7834.4987, 69285684, '1981-11-13');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (49872857-0, 7, 2, 'Marina', 'Palacios', 3478, 294, 79847598, '1986-03-11');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (37859958-1, 7, 2, 'Romeo', 'Marinero', 983.834, 982, 60948565, '1980-07-20');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (90248888-6, 2, 3, 'Ester', 'Bernabé', 3498, 436, 63474569, '1996-03-08');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (35897054-1, 2, 3, 'Enrique', 'Raymundo', 983275, 536, 76894587, '1985-08-05');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (98357776-4, 3, 3, 'Andres', 'Rosales', 4897, 6546, 78437535, '1997-10-03');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (29387583-2, 4, 3, 'Cesia', 'Viera', 4908, 6454, 60895345, '2000-07-14');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (49872785-3, 5, 3, 'Victor', 'Soto', 43897, 456, 63347890, '2000-10-12');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (38297584-7, 5, 3, 'Jonathan', 'Guardado', 847, 5876, 75891298, '1979-05-23');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (98273435-2, 6, 3, 'Manuel', 'Oviedo', 8974, 859, 67769423, '1980-10-21');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (42666575-0, 6, 3, 'Eduardo', 'Guzman', 9845, 5467, 78403733, '1982-12-31');
+INSERT INTO Empleado (DUI, IdCargo, IdAlmacen, Nombre, Apellido, Latitud, Longitud, Telefono, FechaNac) VALUES (02398754-1, 7, 3, 'Cristina', 'Cristales', 098, 65845, 69847397, '1980-01-01');
+	
+-- Datos Productos
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Botella", 1, 1.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Camisa Azul", 1, 4.50);
+
+-- Datos Usuario
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 503, "Juan", "Rosales", "12334xdsf", '1995-2-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (2, 503, "Maria", "Perez", "1hsvdhvh23", '1996-6-13');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 502, "Claudia", "Morazan", "hola123", '1998-7-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Jose", "Rivas", "kernellinux123", '1995-4-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 503, "Mario", "Duran", "asjkdbsabd", '2000-6-19');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 503, "Kevin", "Aurobindo", "asjkdbsabd", '2000-7-13');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 502, "Agnija", "Đạt", "hello11234", '2000-2-1');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 503, "Kevin", "Armando", "soyunalien", '2001-11-28');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Sulma", "Ayala", "soyunalien", '1998-5-28');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Fernando", "Herrera", "fer123", '1994-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (4, 506, "Fernanda", "Herrera", "heodnj123", '1997-4-11');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 506, "Alicia", "Martinez", "advavdva", '1998-5-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 506, "Alicia", "Martinez", "advavdva", '1998-5-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Francisco", "Martinez", "adadad", '1999-7-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (2, 503, "Juana", "Rosales", "lololo123", '1999-2-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 505, "Kelvin", "Marlones", "lalala123", '1999-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 503, "Zorana", "Braelynn", "lalala123", '2001-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Terese", "Duri", "lalala123", '2001-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Felipe", "Marcel", "rororo123", '2000-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Carlo", "Marcel", "rarara123", '2000-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Carlos", "Folos", "pepepe123", '1998-4-14');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Fabio", "Castillo", "fafafa123", '1997-6-17');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (3, 503, "Marta", "Castillo", "mamamamam1234", '1998-6-17');
