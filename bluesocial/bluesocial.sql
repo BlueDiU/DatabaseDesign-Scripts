@@ -250,7 +250,7 @@ REFERENCES Usuario(IdUsuario);
 DROP TABLE IF EXISTS Geocerca;
 CREATE TABLE Geocerca (
  IdGeocerca INT NOT NULL AUTO_INCREMENT,
- -- aun por ver que va :V
+ Coodernadas VARCHAR(200) DEFAULT NULL,
  
  PRIMARY KEY(IdGeocerca)
 );
@@ -531,3 +531,48 @@ INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNa
 VALUES (3, 503, "Fabio", "Castillo", "fafafa123", '1997-6-17');
 INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
 VALUES (3, 503, "Marta", "Castillo", "mamamamam1234", '1998-6-17');
+
+-- Datos Geocerca
+INSERT INTO Geocerca (Coodernadas)
+VALUES (
+'
+  [
+    [-67.13734, 45.13745],
+    [-66.96466, 44.8097],
+    [-68.03252, 44.3252],
+    [-69.06, 43.98],
+    [-70.11617, 43.68405],
+    [-70.64573, 43.09008],
+    [-70.75102, 43.08003],
+    [-70.79761, 43.21973],
+    [-70.98176, 43.36789],
+    [-70.94416, 43.46633],
+    [-71.08482, 45.30524],
+    [-70.66002, 45.46022],
+    [-70.30495, 45.91479],
+    [-70.00014, 46.69317],
+    [-69.23708, 47.44777],
+    [-68.90478, 47.18479],
+    [-68.2343, 47.35462],
+    [-67.79035, 47.06624],
+    [-67.79141, 45.70258],
+    [-67.13734, 45.13745],
+  ]
+'
+);
+
+-- Datos Domicilio
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (122.34, -245.67, 1);
+-- Datos Domicilio
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (134.24, -245.67, 2);
+-- Datos Domicilio
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (823.34, -235.67, 3);
+
+-- Datos DomicilioDetalle
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 1);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 2);
