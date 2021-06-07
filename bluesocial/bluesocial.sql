@@ -186,18 +186,18 @@ ALTER TABLE Factura ADD FOREIGN KEY (IdMetPago)
 REFERENCES MetodoPago(IdMetPago);
 
 /* FACTURA_DETALLE */
-DROP TABLE IF EXISTS FacturaDetalle;
-CREATE TABLE FacturaDetalle (
-  IdFacturaDetalle INT NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS DetalleCompra;
+CREATE TABLE DetalleCompra (
+  IdDetalleCompra INT NOT NULL AUTO_INCREMENT,
   IdSolicitud INT NOT NULL,
   IdFactura INT NOT NULL,
   
-  PRIMARY KEY (IdFacturaDetalle)
+  PRIMARY KEY (IdDetalleCompra)
 );
 
-ALTER TABLE FacturaDetalle ADD FOREIGN KEY (IdSolicitud) 
+ALTER TABLE DetalleCompra ADD FOREIGN KEY (IdSolicitud) 
 REFERENCES Solicitud(IdSolicitud);
-ALTER TABLE FacturaDetalle ADD FOREIGN KEY (IdFactura) 
+ALTER TABLE DetalleCompra ADD FOREIGN KEY (IdFactura) 
 REFERENCES Factura(IdFactura);
 
 /* Clasificacion_Usuario */
@@ -371,12 +371,37 @@ INSERT INTO Marca VALUES (19, 'ORIENTAL');
 INSERT INTO Marca VALUES (20, 'KELLOWS');
 
 -- Datos Colaborador
+-- Datos Colaborador
 INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
 VALUES (503, 1, 'Eusoj Vasri', 'eosoj@gmail.com');
 INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
 VALUES (504, 2, 'Servi Viajes', 'serviviajes@gmail.com');
 INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
 VALUES (502, 4, 'Sonrisas SV', 'risassv@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (503, 1, 'SV sivar', 'sivar@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (504, 4, 'viaat', 'viaat@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (502, 1, 'SV Color', 'sv@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (503, 2, 'risas SV', 'risasj@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (504, 4, 'Senron ', 'senron@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (502, 1, 'aerSV', 'aersv@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (503, 1, 'nanopac', 'nanopac@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (504, 2, 'amsoft', 'amsoft@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (502, 4, 'megaSV', 'megasv@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (503, 1, 'ESA sonrisas', 'esasonrisas@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (504, 2, 'SV super', 'svsuper@gmail.com');
+INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
+VALUES (502, 2, 'Sonrisas SV', 'risassv@gmail.com');
 
 
 -- Datos Almacen
@@ -484,6 +509,103 @@ INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
 VALUES (1, 2, "Botella", 1, 1.50);
 INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
 VALUES (2, 2, "Camisa Azul", 1, 4.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 3, "Almohada", 1, 7.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 3, "Ventilador", 1, 12.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Zapato Nike", 2, 32.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Vestido Verde", 1, 8.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 3, "Toalla", 1, 4.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Papel Higienico", 9, 9.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Alcohol", 3, 11.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Jeans Blanco", 2, 15.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 3, "Basurero", 1, 3.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Tomate", 4, 5.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Chile Jalapeño", 8, 9.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Cebolla", 3, 7.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 4, "Arroz Blanco", 6, 9.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 5, "Cuchara", 1, 3.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 3, "Tenedor", 1, 3.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 2, "Vaso", 1, 4.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 3, "Cama", 4, 25.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Shampoo", 1, 5.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Acondicionador", 1, 9.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Peine", 1, 2.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Esmalte Rojo", 1, 2.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 3, "Pan de Caja", 2, 4.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Vinagre", 2, 1.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 5, "Monitor", 3, 17.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 4, "Foco LED", 1, 4.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Cartera", 1, 9.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 5, "Cuchillo", 1, 3.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 5, "Licuadora", 2, 12.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 2, "Lonchera", 2, 5.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 5, "Teclado", 1, 1.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 3, "Empanizador", 1, 1.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Rizador", 1, 15.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Pinzas", 3, 8.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Blanqueador", 2, 9.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 3, "Galleta", 5, 7.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 5, "Mouse", 2, 13.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Billetera", 2, 25.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (3, 2, "Aceite", 1, 5.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 5, "Sarten", 2, 7.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 3, "Pastel", 4, 12.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Falda Azul", 1, 4.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Pepino", 1, 2.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Detergente", 3, 6.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 3, "Protector", 1, 9.00);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 2, "Bloqueador Solar", 2, 5.75);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (2, 5, "Bocinas", 1, 15.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (4, 3, "Chocolate", 3, 9.50);
+INSERT INTO Producto (IdCategoriaProducto, IdMarca, Nombre, Peso, ValorUnit)
+VALUES (1, 2, "Jabón", 1, 5.00);
+
 
 -- Datos Usuario
 INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
@@ -542,6 +664,10 @@ INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNa
 VALUES (5, 502, "Lorenzo", "Cervantes", "ggggeee2311", '1998-4-12');
 INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
 VALUES (4, 503, "Julian", "Morales", "skdvhvd11", '1999-2-11');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (4, 503, "Julio", "Carvales", "skdvhvd11", '1999-6-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (4, 503, "Marcos", "Kelvo", "kernel10223", '2000-2-11');
 
 -- Datos Geocerca
 INSERT INTO Geocerca (Coodernadas)
@@ -638,8 +764,6 @@ VALUES (1, 2);
 INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
 VALUES (1, 1);
 
--- TODO: SOLICITUD FALTAN DATOS PRODUCTO
-/*
 -- Datos Solictud 6
 INSERT INTO Solicitud(Cantidad, IdProducto)
 VALUES (2, 1);
@@ -652,7 +776,19 @@ VALUES (5, 2);
 INSERT INTO Solicitud(Cantidad, IdProducto)
 VALUES (2, 4);
 INSERT INTO Solicitud(Cantidad, IdProducto)
-VALUES (1, 6);*/
+VALUES (1, 4);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 5);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 4);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 10);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 16);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 22);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 34);
 
 -- Datos MetodoPago
 INSERT INTO MetodoPago (TipoPago)
@@ -664,7 +800,6 @@ VALUES ("Efectivo");
 INSERT INTO MetodoPago (TipoPago)
 VALUES ("Bitcoint");
 
--- TODO: EL NUMERO DE FACTURA DEPENDE DEL NUM DE SOLICITUDES
 -- Datos Factura
 INSERT INTO Factura (PagoTotal,  IdMetPago)
 VALUES (12.34, 1);
@@ -678,5 +813,87 @@ INSERT INTO Factura (PagoTotal,  IdMetPago)
 VALUES (12.45, 1);
 INSERT INTO Factura (PagoTotal,  IdMetPago)
 VALUES (5.67, 4);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (4.67, 2);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (7.34, 1);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (4.56, 3);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (11, 2);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (23.45, 2);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (5.67, 1);
 
--- TODO: FALTA CARRITO COMPRA CON PRODUCTOS
+-- Datos detalleCompra
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (1, 1);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (2, 2);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (3, 3);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (4, 4);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (5, 5);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (6, 6);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (7, 7);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (8, 8);
+INSERT INTO DetalleCompra (IdSolicitud, IdFactura)
+VALUES (9, 9);
+
+-- Datos carrito
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (1, 12);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (1, 3);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (1, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (2, 2);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (2, 40);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (2, 34);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (3, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (3, 1);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (3, 34);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (3, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (4, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (4, 23);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (5, 23);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (12, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (13, 32);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (14, 5);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (14, 9);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (14, 1);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (14, 2);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (14, 3);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (17, 17);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (17, 8);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (17, 12);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (23, 37);
+INSERT INTO Carrito (IdUsuario, IdProducto)
+VALUES (24, 17);
