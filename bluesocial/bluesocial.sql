@@ -165,7 +165,7 @@ REFERENCES Producto(IdProducto);
 DROP TABLE IF EXISTS MetodoPago;
 CREATE TABLE MetodoPago (
   IdMetPago INT NOT NULL AUTO_INCREMENT,
-  TipoPago INT NOT NULL,
+  TipoPago VARCHAR(45) NOT NULL,
 
   PRIMARY KEY(IdMetPago)
 );
@@ -378,6 +378,7 @@ VALUES (504, 2, 'Servi Viajes', 'serviviajes@gmail.com');
 INSERT INTO Colaborador (CodigoPais, IdCategoriaCol, Nombre, Correo)
 VALUES (502, 4, 'Sonrisas SV', 'risassv@gmail.com');
 
+
 -- Datos Almacen
 INSERT INTO Almacen (Longitud, Latitud) VALUES (290, 345);
 INSERT INTO Almacen (Longitud, Latitud) VALUES (290.34, 345);
@@ -530,7 +531,17 @@ VALUES (3, 503, "Carlos", "Folos", "pepepe123", '1998-4-14');
 INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
 VALUES (3, 503, "Fabio", "Castillo", "fafafa123", '1997-6-17');
 INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
-VALUES (3, 503, "Marta", "Castillo", "mamamamam1234", '1998-6-17');
+VALUES (1, 503, "Marta", "Castillo", "mamamamam1234", '1998-6-17');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (1, 503, "Lucas", "Modrid", "ggggeee2311", '2001-7-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (4, 503, "Martin", "Orantes", "ddddeee2311", '2001-7-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 503, "Heber", "Cervantes", "ggggeee2311", '2001-7-23');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (5, 502, "Lorenzo", "Cervantes", "ggggeee2311", '1998-4-12');
+INSERT INTO Usuario (IdClasUsuario, CodigoPais, Nombre, Apellido, Clave, FechaNac)
+VALUES (4, 503, "Julian", "Morales", "skdvhvd11", '1999-2-11');
 
 -- Datos Geocerca
 INSERT INTO Geocerca (Coodernadas)
@@ -563,16 +574,109 @@ VALUES (
 
 -- Datos Domicilio
 INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
-VALUES (122.34, -245.67, 1);
--- Datos Domicilio
+VALUES (134.24, -245.67, 1);
 INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
-VALUES (134.24, -245.67, 2);
--- Datos Domicilio
+VALUES (823.34, -235.67, 2);
 INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
 VALUES (823.34, -235.67, 3);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (825.23, -783.67, 4);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (823.34, -235.67, 5);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (823.34, -235.67, 6);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (823.34, -235.67, 7);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (456.34, -956.67, 8);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -123.67, 9);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -345.67, 10);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -123.67, 11);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -567.67, 12);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -567.67, 14);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -567.67, 13);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -567.67, 15);
+INSERT INTO Domicilio (Latitud, Longitud, IdUsuario)
+VALUES (234, -567.67, 16);
 
 -- Datos DomicilioDetalle
 INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
 VALUES (1, 1);
 INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
 VALUES (1, 2);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 3);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 4);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 5);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 6);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 7);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 8);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 9);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 11);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 12);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 5);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 1);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 2);
+INSERT INTO DomicilioDetalle (IdGeocerca, IdDomicilio)
+VALUES (1, 1);
+
+-- TODO: SOLICITUD FALTAN DATOS PRODUCTO
+/*
+-- Datos Solictud 6
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (2, 1);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 2);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (3, 3);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (5, 2);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (2, 4);
+INSERT INTO Solicitud(Cantidad, IdProducto)
+VALUES (1, 6);*/
+
+-- Datos MetodoPago
+INSERT INTO MetodoPago (TipoPago)
+VALUES ("Credito");
+INSERT INTO MetodoPago (TipoPago)
+VALUES ("Debito");
+INSERT INTO MetodoPago (TipoPago)
+VALUES ("Efectivo");
+INSERT INTO MetodoPago (TipoPago)
+VALUES ("Bitcoint");
+
+-- TODO: EL NUMERO DE FACTURA DEPENDE DEL NUM DE SOLICITUDES
+-- Datos Factura
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (12.34, 1);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (1.49, 2);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (3.45, 3);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (2.30, 1);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (12.45, 1);
+INSERT INTO Factura (PagoTotal,  IdMetPago)
+VALUES (5.67, 4);
+
+-- TODO: FALTA CARRITO COMPRA CON PRODUCTOS
